@@ -1,0 +1,40 @@
+{
+  "name": "@autobrowser-ai/mcp",
+  "version": "0.1.0",
+  "description": "MCP server for browser automation using Autobrowser",
+  "author": "Autobrowser",
+  "homepage": "https://autobrowser.ai",
+  "bugs": "https://github.com/autobrowser-ai/mcp/issues",
+  "type": "module",
+  "bin": {
+    "mcp-server-autobrowser": "dist/index.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "tsup src/index.ts --format esm && shx chmod +x dist/*.js",
+    "prepare": "npm run build",
+    "watch": "tsup src/index.ts --format esm --watch ",
+    "inspector": "CLIENT_PORT=9001 SERVER_PORT=9002 pnpx @modelcontextprotocol/inspector node dist/index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.8.0",
+    "commander": "^13.1.0",
+    "ws": "^8.18.1",
+    "zod": "^3.24.2",
+    "zod-to-json-schema": "^3.24.3"
+  },
+  "devDependencies": {
+    "@r2r/messaging": "workspace:*",
+    "@repo/config": "workspace:*",
+    "@repo/messaging": "workspace:*",
+    "@repo/types": "workspace:*",
+    "@repo/utils": "workspace:*",
+    "@types/ws": "^8.18.0",
+    "shx": "^0.3.4",
+    "tsup": "^8.4.0",
+    "typescript": "^5.6.2"
+  }
+}
